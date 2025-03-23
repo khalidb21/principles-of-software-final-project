@@ -86,71 +86,54 @@ function fillCalendar(month, year) {
       else {
         dateCell.innerText = calendarDate;
         dateCell.classList.add("date-cell"); // added a class for styling
-
+    
+        // Capture the dateKey correctly
+        let selectedDate = calendarDate; // Store current value at event binding
+        const dateKey = year + "/" + (month + 1) + "/" + selectedDate;
+    
         dateCell.addEventListener("click", () => {
-          // Check if the date is already booked
-          if (savedBookings[dateKey]) {
-            const overwrite = confirm(
-              "This date is already booked. Do you want to replace the existing booking?"
-            );
-            if (!overwrite) {
-              return; //Will exit without making a booking if you don't confirm
+            console.log("Date clicked:", dateKey); // Debugging log
+    
+            // Check if the date is already booked
+            if (savedBookings[dateKey]) {
+                const overwrite = confirm(
+                    "This date is already booked. Do you want to replace the existing booking?"
+                );
+                if (!overwrite) {
+                    return;
+                }
             }
-          }
+    
+            const reason = prompt("Enter the reason for booking this date:");
+            if (!reason || reason.trim() === "") {
+                alert("Booking reason cannot be empty.");
+                return;
+            }
 
-          const reason = prompt("Enter the reason for booking this date:"); // prompt to input booking
-          //Error handling -empty input
-          if (!reason || reason.trim() == "") {
-            //.trim() removes whitespaces
-            alert("Booking reason cannot be empty.");
-            return; // Exit if no valid input
-          }
-
-          //when prompt for reason is entered
-          if (reason) {
-            dateCell.classList.add("booked"); // Add class for booked date styling
-            dateCell.innerHTML = calendarDate + "<br> Booked: " + reason; // Use line break for new line
-
-            // Save booking to localStorage with both date and reason
-            // objects that uses keys, not an array
+            // Update UI
+            dateCell.classList.add("booked");
+            dateCell.innerHTML = selectedDate + "<br> Booked: " + reason;
+    
+            // Save booking to localStorage
             savedBookings[dateKey] = { date: dateKey, reason: reason };
-
-            //Error handling
             try {
-              // Try saving booking to localStorage or else print error to console and give alert
-              try {
                 localStorage.setItem("bookings", JSON.stringify(savedBookings));
-              } catch (storageError) {
-                console.error(
-                  "Could not save booking to localStorage:",
-                  storageError
-                );
-                alert(
-                  "Warning: Booking could not be saved for future sessions."
-                );
-              }
-            } catch (error) {
-              //catch any other error that occurs and alert to an unexpected error
-              console.error("An error occurred during booking:", error);
-              alert("An unexpected error occurred. Please try again.");
+            } catch (storageError) {
+                console.error("Could not save booking to localStorage:", storageError);
+                alert("Warning: Booking could not be saved for future sessions.");
             }
-          }
         });
-
-        // This creates key used for accessing savedBookings object values paired with key
-        const dateKey = year + "/" + (month + 1) + "/" + calendarDate; // Format: YYYY/MM/DD
-
-        // if there this saved data add it back when filling calendar
+    
+        // Restore saved booking data
         if (savedBookings[dateKey]) {
-          dateCell.classList.add("booked"); // Add booked class
-          dateCell.innerHTML =
-            calendarDate + "<br> Booked: " + savedBookings[dateKey].reason; // Show booked reason
+            dateCell.classList.add("booked");
+            dateCell.innerHTML =
+                selectedDate + "<br> Booked: " + savedBookings[dateKey].reason;
         }
-
-        //increment calendar date and continue filling calendar
-        calendarDate++;
-      }
-
+    
+        calendarDate++; // Increment at the end
+    }
+    
       // add cell to row
       row.appendChild(dateCell);
     }
