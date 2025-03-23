@@ -1,0 +1,119 @@
+/* Choose text font */
+body {
+    font-family: "roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    /* Image to cover background */
+    background-image: url('calendar_background.jpg');
+    background-size: cover;
+}
+
+/*Calendar header font settings */
+#calendar-header {
+    text-align: center;
+    font-family: "Roboto", serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 2.5rem;
+    color: black;
+}
+
+/* table style settings */
+table {
+    background-color: white;
+    box-sizing: border-box;
+    /*changes total width and height to account for border/padding*/
+    height: auto;
+    width: 55%;
+    min-height: 500px;
+    border: 3px solid;
+    border-collapse: collapse;
+    /*cell borders are shared inside table*/
+    margin: auto;
+    /* auto set left and right margins to put table in the middle*/
+    text-align: center;
+    table-layout: fixed;
+    /* for consistent columns */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* table header style settings */
+#weekday-header {
+    background-color: lightblue;
+    border: 2px solid black;
+}
+
+td {
+    border: 1px solid;
+    color: black;
+    text-align: left;
+    /* Align text to the left */
+    vertical-align: top;
+    /* Align text to the top */
+}
+
+.empty {
+    background-color: lightgrey;
+}
+
+.date-cell.booked {
+    background-color: lightgreen;
+    /* Change color when booked */
+    font-weight: 700;
+    /*Font becomes bolder*/
+}
+
+/* Hover effect for date cells */
+.date-cell:hover {
+    background-color: lightblue;
+    /* Change background color on hover */
+    cursor: pointer;
+    /* Change cursor to show cell is clickable */
+}
+
+/* when a date cell is clicked */
+.date-cell:active {
+    background-color: aqua;
+    /* Change color when clicked */
+}
+
+/* rotate left arrow to point in left direction */
+#left-arrow {
+    transform: rotate(180deg);
+}
+
+/* Center buttons using div id with a gap and transparent background */
+#arrow-box {
+    display: flex;
+    justify-content: center;
+    /* Centers buttons horizontally */
+    gap: 900px;
+    /* Adds space between buttons */
+    margin-top: 25px;
+    /*some space between arrows and table*/
+}
+
+/*button style settings*/
+.arrow-button {
+    background-color: rgb(238, 204, 204);
+    border: 2px solid #000000;
+    cursor: pointer;
+    /* changes cursor to show its a button */
+}
+
+/* image specific settings for button */
+.arrow-button img {
+    width: 10vw;
+    /* Adjust size of the arrow based on screen width */
+    height: auto;
+    /* adjust height based on width to maintain aspect ratio */
+}
+
+/* font settings for footer */
+footer {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-size: 1.5rem;
+    font-style: italic;
+    text-align: center;
+}

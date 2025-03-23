@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <h1 id="calendar-header"> <!-- Month and year will be inserted here by javascript --> </h1>
+    <table>
+        <!-- Weekday header for calendar -->
+        <thead id="weekday-header">
+            <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+            </tr>
+        </thead>
+        <tbody id="calendar-body">
+            <!-- Calendar dates will be inserted by javascript here -->
+        </tbody>
+    </table>
+
+    <!-- arrow buttons for changing months -->
+    <div id="arrow-box">
+        <button type="submit" class="arrow-button">
+            <img src="up-arrow-png.png" alt="left-arrow" id="left-arrow">
+        </button>
+        <button type="submit" class="arrow-button">
+            <img src="up-arrow-png.png" alt="right-arrow" id="right-arrow">
+        </button>
+    </div>
+
+    <!-- footer at bottom of page -->
+    <br><br><br>
+    <footer>Calendar created by: Khalid Badri</footer>
+    <footer>Student ID: 100917156</footer>
+
+    <!-- link html to javascript -->
+    <script src="event-calendar.js"></script>
+</body>
+
+</html>
