@@ -22,6 +22,7 @@ body {
 table {
     background-color: white;
     box-sizing: border-box;
+    border-radius: 3px;
     /*changes total width and height to account for border/padding*/
     height: auto;
     width: 55%;
@@ -44,16 +45,25 @@ table {
 }
 
 td {
+    height: 55px !important;
     border: 1px solid;
     color: black;
     text-align: left;
     /* Align text to the left */
     vertical-align: top;
     /* Align text to the top */
+    text-overflow: ellipsis;  /* Adds "..." when text overflows */
+    overflow: hidden;
+    white-space: nowrap;
 }
+
 
 .empty {
     background-color: lightgrey;
+}
+
+.date-cell {
+    transition: background-color 0.5s, height 0.5s;
 }
 
 .date-cell.booked {
@@ -69,6 +79,8 @@ td {
     /* Change background color on hover */
     cursor: pointer;
     /* Change cursor to show cell is clickable */
+    white-space: normal;
+
 }
 
 /* when a date cell is clicked */
@@ -97,6 +109,7 @@ td {
 .arrow-button {
     background-color: rgb(238, 204, 204);
     border: 2px solid #000000;
+    border-radius: 9px;
     cursor: pointer;
     /* changes cursor to show its a button */
 }
